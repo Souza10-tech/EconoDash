@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Inter', sans-serif;
+}
+
+:root {
+    --fundo: #0b0e14;
+    --topo: #151921;
+    --texto: #e4e6eb;
+    --verde: #00ff88;
+    --azul: #3d8aff;
+}
+
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+
+header {
+    background-color: var(--topo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav a {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.logo h1 span {
+    color: var(--verde);
+}
+
+.btn perfil {
+    background-color: var(--azul);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+
+.btn-perfil:hover {
+    background-color: #2a6edb;
+    box-shadow: 0 0 10px rgba(61, 138, 255, 0.3);
+}
+
+main {
+    padding: 40px 5%; 
+    min-height: calc(100vh - 160px);
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.welcome p {
+    color: var(--text-light); 
+    font-weight: 400;
+}
+
+
+.linha-destaque {
+    width: 50px;
+    height: 4px;
+    background-color: var(--verde);
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+.grid-indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 25px; 
+    margin-top: 40px;
+}
+.card {
+    background-color: rgba(21, 25, 33, 0.8); /* Fundo com 80% de opacidade */
+    backdrop-filter: blur(10px); /* Efeito de desfoque no que está atrás */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda quase invisível */
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--verde);
+}
+
+.card h3 {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card .valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.variacao {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.alta {
+    color: var(--verde);
+    background-color: rgba(0, 255, 136, 0.1); 
+}
+
+.baixa {
+    color: var(--accent-red); 
+    background-color: rgba(255, 74, 74, 0.1);
+}
+
+.neutra {
+    color: var(--text-light);
+    background-color: rgba(176, 179, 184, 0.1);
+}
+
+footer {
+    margin-top: 100px; /* Dá um espaço grande entre o conteúdo e o fim da página */
+    padding: 40px 5%;
+    background-color: var(--topo);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.footer-links a:hover {
+    color: var(--verde);
+}
+
+.moedas-detalhe {
+    margin-top: 50px;
+    background-color: var(--topo);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Tira espaços entre as células */
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    color: var(--verde);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* Faz as linhas da tabela brilharem levemente ao passar o mouse */
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    transition: 0.2s;
+}
+
+/* Deixa os valores numéricos com uma fonte mais 'robusta' */
+td:nth-child(2), td:nth-child(3) {
+    font-family: 'Courier New', Courier, monospace; /* Fontes mono parecem mais 'financeiras' */
+    color: var(--text-color);
+}
+
+.status-sistema {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--verde);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pingo-luz {
+    width: 8px;
+    height: 8px;
+    background-color: var(--verde);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--verde);
+    animation: pulsar 2s infinite; /* Faz a luzinha "respirar" */
+}
+
+@keyframes pulsar {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+@media (max-width: 768px) {
+    .grid-indicadores {
+        grid-template-columns: 1fr; /* Apenas 1 coluna no celular */
+    }
+    
+    .footer-content {
+        flex-direction: column; /* Links abaixo do texto no footer */
+        gap: 20px;
+    }
+}
+
+/* Container que centraliza a calculadora */
+.calc-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Centraliza a calculadora na tela */
+}
+
+.card-calc {
+    background-color: var(--topo);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px; /* Não deixa a calculadora ficar larga demais */
+    border: 1px solid var(--border-color);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Coloca o label acima do input */
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+/* Estilo dos campos de digitação */
+.input-group input {
+    background-color: var(--fundo);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 6px;
+    color: white;
+    outline: none; /* Tira aquela borda azul padrão do navegador */
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--verde); /* Brilha verde quando você clica para digitar */
+}
+
+.btn-calcular {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--verde);
+    color: #0b0e14; /* Texto escuro no fundo claro para contraste */
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-calcular:hover {
+    background-color: #00d975;
+    transform: scale(1.02); /* Aumenta levemente no hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
