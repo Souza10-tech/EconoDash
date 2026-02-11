@@ -1,67 +1,102 @@
+/* ==========================================================================
+   1. RESET E CONFIGURAÇÕES GLOBAIS
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 :root {
     --fundo: #0b0e14;
     --topo: #151921;
     --texto: #e4e6eb;
+    --text-light: #b0b3b8;
     --verde: #00ff88;
     --azul: #3d8aff;
+    --accent-red: #ff4a4a;
+    --border-color: #242933;
 }
 
 body {
     background-color: var(--fundo);
     color: var(--texto);
+    line-height: 1.6;
 }
 
-header {
+/* ==========================================================================
+   2. ESTRUTURA DE LAYOUT (SIDEBAR + MAIN)
+   ========================================================================== */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
     background-color: var(--topo);
+    position: fixed; /* Fixa na lateral esquerda */
+    left: 0;
+    top: 0;
+    padding: 30px 20px;
+    border-right: 1px solid var(--border-color);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
+    flex-direction: column; /* Garante que logo e nav fiquem um sob o outro */
+    z-index: 1000;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
+.main-content {
+    flex: 1;
+    margin-left: 250px; /* Evita que o conteúdo fique atrás da sidebar */
+    padding: 40px 5%;
+    min-height: 100vh;
 }
 
-nav ul li {
-    margin-left: 25px;
-}
-
-nav a {
+/* ==========================================================================
+   3. NAVEGAÇÃO (SIDEBAR)
+   ========================================================================== */
+.logo h1 {
+    font-size: 1.5rem;
     color: var(--texto);
-    text-decoration: none;
-    font-weight: 500;
 }
 
 .logo h1 span {
     color: var(--verde);
 }
 
-.btn perfil {
-    background-color: var(--azul);
-    color: white !important;
-    padding: 8px 16px;
-    border-radius: 4px;
+.side-nav ul {
+    list-style: none;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column; /* CORREÇÃO: Alinha links verticalmente */
+    gap: 8px;
+}
+
+.side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
     transition: 0.3s;
+    font-weight: 500;
 }
 
-
-.btn-perfil:hover {
-    background-color: #2a6edb;
-    box-shadow: 0 0 10px rgba(61, 138, 255, 0.3);
+.side-nav a:hover, 
+.side-nav a.active {
+    background-color: rgba(0, 255, 136, 0.1);
+    color: var(--verde);
 }
 
-main {
-    padding: 40px 5%; 
-    min-height: calc(100vh - 160px);
+/* ==========================================================================
+   4. CONTEÚDO: WELCOME E STATUS
+   ========================================================================== */
+.welcome {
+    margin-bottom: 30px;
 }
 
 .welcome h2 {
@@ -70,135 +105,7 @@ main {
 }
 
 .welcome p {
-    color: var(--text-light); 
-    font-weight: 400;
-}
-
-
-.linha-destaque {
-    width: 50px;
-    height: 4px;
-    background-color: var(--verde);
-    margin-top: 15px;
-    border-radius: 2px;
-}
-
-.grid-indicadores {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 25px; 
-    margin-top: 40px;
-}
-.card {
-    background-color: rgba(21, 25, 33, 0.8); /* Fundo com 80% de opacidade */
-    backdrop-filter: blur(10px); /* Efeito de desfoque no que está atrás */
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda quase invisível */
-    padding: 20px;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--verde);
-}
-
-.card h3 {
     color: var(--text-light);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.card .valor {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.variacao {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.alta {
-    color: var(--verde);
-    background-color: rgba(0, 255, 136, 0.1); 
-}
-
-.baixa {
-    color: var(--accent-red); 
-    background-color: rgba(255, 74, 74, 0.1);
-}
-
-.neutra {
-    color: var(--text-light);
-    background-color: rgba(176, 179, 184, 0.1);
-}
-
-footer {
-    margin-top: 100px; /* Dá um espaço grande entre o conteúdo e o fim da página */
-    padding: 40px 5%;
-    background-color: var(--topo);
-    border-top: 1px solid var(--border-color);
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-.footer-links a:hover {
-    color: var(--verde);
-}
-
-.moedas-detalhe {
-    margin-top: 50px;
-    background-color: var(--topo);
-    padding: 20px;
-    border-radius: 8px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse; /* Tira espaços entre as células */
-    margin-top: 20px;
-}
-
-th, td {
-    text-align: left;
-    padding: 15px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-th {
-    color: var(--verde);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-}
-
-/* Faz as linhas da tabela brilharem levemente ao passar o mouse */
-tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.03);
-    transition: 0.2s;
-}
-
-/* Deixa os valores numéricos com uma fonte mais 'robusta' */
-td:nth-child(2), td:nth-child(3) {
-    font-family: 'Courier New', Courier, monospace; /* Fontes mono parecem mais 'financeiras' */
-    color: var(--text-color);
 }
 
 .status-sistema {
@@ -217,7 +124,192 @@ td:nth-child(2), td:nth-child(3) {
     background-color: var(--verde);
     border-radius: 50%;
     box-shadow: 0 0 8px var(--verde);
-    animation: pulsar 2s infinite; /* Faz a luzinha "respirar" */
+    animation: pulsar 2s infinite;
+}
+
+.linha-destaque {
+    width: 50px;
+    height: 4px;
+    background-color: var(--verde);
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   5. COMPONENTES: CARDS DE INDICADORES
+   ========================================================================== */
+.grid-indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: rgba(21, 25, 33, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--verde);
+}
+
+.card h3 {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card .valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+/* Estilo das Badges de Variação */
+.variacao {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.alta { color: var(--verde); background-color: rgba(0, 255, 136, 0.1); }
+.baixa { color: var(--accent-red); background-color: rgba(255, 74, 74, 0.1); }
+.neutra { color: var(--text-light); background-color: rgba(176, 179, 184, 0.1); }
+
+/* ==========================================================================
+   6. COMPONENTES: TABELAS
+   ========================================================================== */
+.moedas-detalhe {
+    margin-top: 50px;
+    background-color: var(--topo);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 18px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    color: var(--verde);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+td:nth-child(2), td:nth-child(3) {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* ==========================================================================
+   7. COMPONENTES: CALCULADORA
+   ========================================================================== */
+.calc-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-calc {
+    background-color: var(--topo);
+    padding: 35px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--border-color);
+}
+
+.input-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    background-color: var(--fundo);
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--verde);
+}
+
+.btn-calcular {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--verde);
+    color: #0b0e14;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-calcular:hover {
+    background-color: #00d975;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   8. RODAPÉ E ANIMAÇÕES
+   ========================================================================== */
+footer {
+    margin-top: auto; /* Empurra o footer para o fim do main-content */
+    padding: 40px 0 20px 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--verde);
 }
 
 @keyframes pulsar {
@@ -226,90 +318,134 @@ td:nth-child(2), td:nth-child(3) {
     100% { opacity: 0.4; }
 }
 
+/* ==========================================================================
+   9. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px; /* Sidebar compacta para tablets */
+        padding: 20px 10px;
+    }
+    .sidebar h1, .side-nav a span {
+        display: none; /* Esconde texto, deixa só ícones */
+    }
+    .main-content {
+        margin-left: 80px;
+    }
+}
+
 @media (max-width: 768px) {
     .grid-indicadores {
-        grid-template-columns: 1fr; /* Apenas 1 coluna no celular */
+        grid-template-columns: 1fr;
     }
-    
     .footer-content {
-        flex-direction: column; /* Links abaixo do texto no footer */
+        flex-direction: column;
         gap: 20px;
+        text-align: center;
     }
 }
 
-/* Container que centraliza a calculadora */
-.calc-container {
+.perfil-container {
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
-    display: flex;
-    justify-content: center; /* Centraliza a calculadora na tela */
 }
 
-.card-calc {
+.card-perfil {
     background-color: var(--topo);
-    padding: 30px;
-    border-radius: 12px;
     width: 100%;
-    max-width: 450px; /* Não deixa a calculadora ficar larga demais */
+    max-width: 500px;
+    border-radius: 15px;
     border: 1px solid var(--border-color);
+    overflow: hidden; /* Garante que nada saia das bordas arredondadas */
 }
 
-.input-group {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column; /* Coloca o label acima do input */
+.perfil-header {
+    background: linear-gradient(135deg, var(--topo), #1c222d);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.input-group label {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-bottom: 8px;
-}
-
-/* Estilo dos campos de digitação */
-.input-group input {
+.avatar {
+    width: 80px;
+    height: 80px;
     background-color: var(--fundo);
-    border: 1px solid var(--border-color);
-    padding: 12px;
-    border-radius: 6px;
-    color: white;
-    outline: none; /* Tira aquela borda azul padrão do navegador */
-    transition: 0.3s;
+    border: 2px solid var(--verde);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 2rem;
+    color: var(--verde);
 }
 
-.input-group input:focus {
-    border-color: var(--verde); /* Brilha verde quando você clica para digitar */
+.perfil-detalhes {
+    padding: 30px;
 }
 
-.btn-calcular {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--verde);
-    color: #0b0e14; /* Texto escuro no fundo claro para contraste */
-    border: none;
-    border-radius: 6px;
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-item span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--verde);
+    text-transform: uppercase;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    margin-bottom: 5px;
 }
 
-.btn-calcular:hover {
-    background-color: #00d975;
-    transform: scale(1.02); /* Aumenta levemente no hover */
+.info-item p {
+    font-size: 1rem;
+    color: var(--texto);
 }
 
+.news-feed {
+    margin-top: 40px;
+    background-color: var(--topo);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
 
+.news-item {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
 
+.news-item:last-child {
+    border-bottom: none;
+}
 
+.news-date {
+    font-size: 0.75rem;
+    color: var(--verde);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
 
+.news-item p {
+    font-size: 0.95rem;
+    color: var(--texto);
+}
 
+.divisor {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 40px 0;
+    width: 100%;
+}
 
-
-
-
-
-
-
-
-
-
-
+/* Garante que o texto dentro da tabela herde as cores das badges */
+td span.variacao {
+    font-family: 'Courier New', Courier, monospace; /* Mantém o estilo financeiro */
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}

@@ -8,88 +8,106 @@
     </head>
 
     <body>
-        <header>
-    <div class="logo">
-        <h1>Econo<span>Dash</span></h1>
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="calculadoras.html">Calculadoras</a></li>
-            <li><a href="#" class="btn-perfil">Meu Perfil</a></li>
-        </ul>
-    </nav>
-        </header>
-
-    <main> 
-        <section class="welcome">
-
-            <div class="status-sistema">
-                <span class="pingo-luz"></span> Mercado Aberto
+    <div class="wrapper"> `
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Econo<span>Dash</span></h1>
             </div>
+            <nav class="side-nav">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="calculadoras.html"><i class="fas fa-calculator"></i> Calculadoras</a></li>
+                    <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content"> <section class="welcome">
+                <div class="status-sistema">
+                    <span class="pingo-luz"></span> Mercado Aberto
+                </div>
                 <h2>Olá, Miguel Souza</h2>
+            </section>
 
-        </section>
+            <section class="grid-indicadores">
+                <div class="card"> 
+                                    <h3><i class="fas fa-dollar-sign"></i> Dólar</h3>
+                                    <p class="valor">R$ 5,12</p>
+                                    <span class="variacao neutra">● Estável</span>
+                </div>
 
-        <section class="grid-indicadores">
+                <div class="card"> 
+                                    <h3><i class="fas fa-percent"></i> Taxa Selic</h3>
+                                    <p class="valor">13,75%</p>
+                                    <span class="variacao neutra">● Estável</span>
+                </div>
 
-        <div class="card"> 
-            <h3><i class="fas fa-dollar-sign"></i> Dólar</h3>
-            <p class="valor">R$ 5,12</p>
-            <span class="variacao neutra">● Estável</span>
-        </div>  
+                <div class="card"> 
+                                    <h3><i class="fas fa-chart-line"></i> IPCA</h3>
+                                    <p class="valor">0,56%</p>
+                                    <span class="variacao baixa">▼ 0.12%</span>
+                </div>
+            </section>
 
-        <div class="card"> 
-            <h3>Taxa Selic</h3>
-            <p class="valor">13,75%</p>
-            <span class="variacao neutra">● Estável</span>
-        </div>
+            <section class="moedas-detalhe">
+                                    <h3><i class="fas fa-exchange-alt"></i> Cotações vs Real (BRL)</h3>
+                <table>
+                    <thead>
+                            <tr>
+                                    <th>Moeda</th>
+                                    <th>Símbolo</th>
+                                    <th>Compra</th>
+                                    <th>Venda</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                    <td>Euro</td>
+                                    <td>EUR</td>
+                                    <td><span class="variacao alta">R$ 5,54</span></td>
+                                    <td><span class="variacao alta">R$ 5,56</span></td>
+                            </tr>
+                            <tr>
+                                    <td>Libra Esterlina</td>
+                                    <td>GBP</td>
+                                    <td><span class="variacao alta">R$ 6,42</span></td>
+                                    <td><span class="variacao alta">R$ 6,45</span></td>
+                            </tr>
+                            <tr>
+                                    <td>Peso Argentino</td>
+                                    <td>ARS</td>
+                                    <td><span class="variacao baixa">R$ 0,006</span></td>
+                                    <td><span class="variacao baixa">R$ 0,006</span></td>
+                            </tr>
+                            <tr>
+                                    <td>Bitcoin</td>
+                                    <td>BTC</td>
+                                    <td><span class="variacao alta">R$ 520.450</span></td>
+                                    <td><span class="variacao alta">R$ 520.455</span></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </section>
 
-        <div class="card"> 
-            <h3>IPCA</h3>
-            <p class="valor">0,56%</p>
-            <span class="variacao baixa">▼ 0.12%</span>
-        </div> 
+            <section class="news-feed">
+                                    <h3><i class="fas fa-newspaper"></i> Destaques do Mercado</h3>
+                <div class="news-item">
+                                    <span class="news-date">Hoje, 14:30</span>
+                                    <p>COPOM mantém taxa Selic: Impactos no cenário de investimentos para 2026.</p>
+                </div>
+                <div class="news-item">
+                                    <span class="news-date">Hoje, 10:15</span>
+                                    <p>Exportações baianas batem recorde no primeiro trimestre; Agronegócio lidera.</p>
+                </div>
+                </section>    
 
-        </section>
+            <footer>
+                <div class="footer-content">
+                    <p>&copy; 2026 EconoDash | Desenvolvido por Miguel Souza</p>
+                </div>
+            </footer>
+        </main>
 
-        <section class="moedas-detalhe">
-                <h3>Cotações Detalhadas</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Moeda</th>
-                        <th>Compra</th>
-                        <th>Venda</th>
-                    </tr>
-                </thead>
-            <tbody>
-                    <tr>
-                        <td>Euro</td>
-                        <td>R$ 5,54</td>
-                    <td>R$ 5,56</td>
-                    </tr>
-                    <tr>
-                        <td>Libra Estatal</td>
-                        <td>R$ 6,42</td>
-                        <td>R$ 6,45</td>
-                    </tr>
-            </tbody>
-            </table>
-        </section>
-
-    </main>
-
-    <footer>
-    <div class="footer-content">
-        <p>&copy; 2026 EconoDash | Desenvolvido por Miguel Souza</p>
-        <div class="footer-links">
-            <a href="#">Termos de Uso</a>
-            <a href="#">Privacidade</a>
-        </div>
-    </div>
-    </footer>
-
+    </div> 
     </body>
 </html>

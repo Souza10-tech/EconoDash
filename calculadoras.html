@@ -4,55 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadoras | EconoDash</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-
-    <header>
-        <div class="logo">
-            <h1>Econo<span>Dash</span></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Dashboard</a></li> <li><a href="calculadoras.html">Calculadoras</a></li>
-                <li><a href="#" class="btn-perfil">Meu Perfil</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="welcome">
-            <h2>Calculadoras Financeiras</h2>
-            <p>Ferramentas para suporte em análise econômica.</p>
-            <div class="linha-destaque"></div>
-        </section>
-
-        <section class="calc-container">
-            <div class="card-calc">
-                <h3><i class="fas fa-calculator"></i> Simular Juros Compostos</h3>
-        
-        <form>
-            <div class="input-group">
-                <label>Capital Inicial (R$)</label>
-                <input type="number" placeholder="Ex: 1000">
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Econo<span>Dash</span></h1>
             </div>
+            <nav class="side-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="calculadoras.html" class="active"><i class="fas fa-calculator"></i> Calculadoras</a></li>
+                    <li><a href="perfil.html"><i class="fas fa-user-circle"></i> Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-            <div class="input-group">
-                <label>Taxa Mensal (%)</label>
-                <input type="number" placeholder="Ex: 1">
-            </div>
+        <main class="main-content">
+            <section class="welcome">
+                <h2>Calculadoras Financeiras</h2>
+                <p>Ferramentas para suporte em análise econômica.</p>
+                <div class="linha-destaque"></div>
+            </section>
 
-            <div class="input-group">
-                <label>Tempo (Meses)</label>
-                <input type="number" placeholder="Ex: 12">
-            </div>
+            <section class="calc-container">
+                <div class="card-calc">
+                    <h3><i class="fas fa-calculator"></i> Simular Juros Compostos</h3>
+                    
+                    <form id="calcForm">
+                        <div class="input-group">
+                            <label>Capital Inicial (R$)</label>
+                            <input type="number" id="capital" placeholder="Ex: 1000">
+                        </div>
 
-            <button type="button" class="btn-calcular">Calcular Resultado</button>
-        </form>
-            </div>
-        </section>
+                        <div class="input-group">
+                            <label>Taxa Mensal (%)</label>
+                            <input type="number" id="taxa" placeholder="Ex: 1">
+                        </div>
 
+                        <div class="input-group">
+                            <label>Tempo (Meses)</label>
+                            <input type="number" id="tempo" placeholder="Ex: 12">
+                        </div>
+
+                        <button type="button" class="btn-calcular">Calcular Resultado</button>
+                    </form>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-content">
+                    <p>&copy; 2026 EconoDash | Desenvolvido por Miguel Souza</p>
+                </div>
+            </footer>
         </main>
+    </div>
+
+    <script>
+    document.querySelector('.btn-calcular').addEventListener('click', function() {
+        const capital = parseFloat(document.getElementById('capital').value);
+        const taxa = parseFloat(document.getElementById('taxa').value) / 100;
+        const tempo = parseFloat(document.getElementById('tempo').value);
+
+        if(capital && taxa && tempo) {
+            // Fórmula: M = C * (1 + i)^t
+            const resultado = capital * Math.pow((1 + taxa), tempo);
+            alert("O montante final será de: R$ " + resultado.toFixed(2));
+        } else {
+            alert("Por favor, preencha todos os campos!");
+        }
+    });
+    </script>
 
 </body>
 </html>
