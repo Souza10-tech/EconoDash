@@ -319,28 +319,70 @@ footer {
 }
 
 /* ==========================================================================
-   9. RESPONSIVIDADE
+   9. RESPONSIVIDADE (AJUSTADA)
    ========================================================================== */
+
+/* TABLETS: Sidebar vira barra de ícones lateral */
 @media (max-width: 992px) {
     .sidebar {
-        width: 80px; /* Sidebar compacta para tablets */
+        width: 80px;
         padding: 20px 10px;
+        align-items: center;
     }
-    .sidebar h1, .side-nav a span {
-        display: none; /* Esconde texto, deixa só ícones */
+    .sidebar h1, 
+    .side-nav a span {
+        display: none; /* Esconde textos para ganhar espaço */
     }
     .main-content {
         margin-left: 80px;
     }
 }
 
+/* CELULARES: Sidebar vai para o topo e conteúdo ocupa a tela toda */
 @media (max-width: 768px) {
-    .grid-indicadores {
-        grid-template-columns: 1fr;
+    .wrapper {
+        flex-direction: column; /* Empilha: Menu em cima, Conteúdo embaixo */
     }
+
+    .sidebar {
+        width: 100%;
+        height: auto; /* Para de ocupar a tela toda */
+        position: relative; /* Sai da lateral e vira um bloco normal no topo */
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .side-nav ul {
+        flex-direction: row; /* Links um ao lado do outro no celular */
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .side-nav a {
+        padding: 10px;
+        flex-direction: column; /* Ícone em cima do texto (opcional) */
+        gap: 5px;
+        font-size: 0.8rem;
+    }
+
+    .main-content {
+        margin-left: 0; /* REMOVE a margem da esquerda no celular */
+        padding: 20px;
+    }
+
+    .grid-indicadores {
+        grid-template-columns: 1fr; /* Um card por linha */
+    }
+
     .footer-content {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         text-align: center;
     }
 }
