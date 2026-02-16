@@ -50,6 +50,12 @@
                         </div>
 
                         <button type="button" class="btn-calcular">Calcular Resultado</button>
+
+                        <div id="resultado-calc" class="resultado-container" style="display: none;">
+                            <h4>Resultado Estimado:</h4>
+                            <p class="valor-final">R$ 0,00</p>
+                            <small>Total de juros: R$ 0,00</small>
+                        </div>        
                     </form>
                 </div>
             </section>
@@ -64,19 +70,34 @@
 
     <script>
     document.querySelector('.btn-calcular').addEventListener('click', function() {
-        const capital = parseFloat(document.getElementById('capital').value);
-        const taxa = parseFloat(document.getElementById('taxa').value) / 100;
-        const tempo = parseFloat(document.getElementById('tempo').value);
+    // 1. Pega os valores dos inputs
+    const capital = parseFloat(document.getElementById('capital').value);
+    const taxa = parseFloat(document.getElementById('taxa').value) / 100;
+    const tempo = parseFloat(document.getElementById('tempo').value);
 
-        if(capital && taxa && tempo) {
-            // Fórmula: M = C * (1 + i)^t
-            const resultado = capital * Math.pow((1 + taxa), tempo);
-            alert("O montante final será de: R$ " + resultado.toFixed(2));
-        } else {
-            alert("Por favor, preencha todos os campos!");
-        }
-    });
+    // 2. Verifica se os campos estão preenchidos
+    if(!isNaN(capital) && !isNaN(taxa) && !isNaN(tempo)) {
+        
+        // 3. Cálculo do Montante: M = C * (1 + i)^t
+        const montante = capital * Math.pow((1 + taxa), tempo);
+        const juros = montante - capital;
+
+        // 4. Seleciona o container de resultado e os textos
+        const container = document.getElementById('resultado-calc');
+        const txtValorFinal = container.querySelector('.valor-final');
+        const txtJuros = container.querySelector('small');
+
+        // 5. Formata os valores para moeda brasileira (R$) e exibe
+        txtValorFinal.innerText = montante.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        txtJuros.innerText = "Total de juros: " + juros.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        // 6. Faz o container aparecer (tira o display: none)
+        container.style.display = 'block';
+
+    } else {
+        alert("Por favor, preencha todos os campos com números válidos!");
+    }
+        });
     </script>
-
 </body>
 </html>
