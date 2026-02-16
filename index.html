@@ -1,14 +1,16 @@
-<!DOCTYPE html> <html lang="pt-br"> 
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>EconoDash | Seu Painel</title>
-        <link rel="stylesheet" href="style.css"> 
-    </head>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <body>
-    <div class="wrapper"> `
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EconoDash | Seu Painel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
         <aside class="sidebar">
             <div class="logo">
                 <h1>Econo<span>Dash</span></h1>
@@ -22,84 +24,85 @@
             </nav>
         </aside>
 
-        <main class="main-content"> <section class="welcome">
+        <main class="main-content">
+            <section class="welcome">
                 <div class="status-sistema">
-                    <span class="pingo-luz"></span> Mercado Aberto
+                    <div id="pingo-luz" class="pingo-luz"></div>
+                    <span id="texto-status">Verificando mercado...</span>
+                    <span style="margin-left: 10px; color: var(--text-light)" id="relogio">00:00:00</span>
                 </div>
                 <h2>Olá, Miguel Souza</h2>
             </section>
 
             <section class="grid-indicadores">
-                <div class="card"> 
-                                    <h3><i class="fas fa-dollar-sign"></i> Dólar</h3>
-                                    <p class="valor">R$ 5,12</p>
-                                    <span class="variacao neutra">● Estável</span>
+                <div class="card">
+                    <h3><i class="fas fa-dollar-sign"></i> Dólar</h3>
+                    <p class="valor">R$ <span id="valor-dolar">5,12</span></p>
+                    <span class="variacao neutra">● Estável</span>
                 </div>
 
                 <div class="card"> 
-                                    <h3><i class="fas fa-percent"></i> Taxa Selic</h3>
-                                    <p class="valor">13,75%</p>
-                                    <span class="variacao neutra">● Estável</span>
+                    <h3><i class="fas fa-percent"></i> Taxa Selic</h3>
+                    <p class="valor"><span id="valor-selic">13,75</span>%</p> <span class="variacao neutra">● Estável</span>
                 </div>
 
                 <div class="card"> 
-                                    <h3><i class="fas fa-chart-line"></i> IPCA</h3>
-                                    <p class="valor">0,56%</p>
-                                    <span class="variacao baixa">▼ 0.12%</span>
+                    <h3><i class="fas fa-chart-line"></i> IPCA</h3>
+                    <p class="valor"><span id="valor-ipca">0,56</span>%</p> <span class="variacao baixa">▼ 0.12%</span>
                 </div>
             </section>
 
             <section class="moedas-detalhe">
-                                    <h3><i class="fas fa-exchange-alt"></i> Cotações vs Real (BRL)</h3>
+                <h3><i class="fas fa-exchange-alt"></i> Cotações vs Real (BRL)</h3>
                 <table>
                     <thead>
-                            <tr>
-                                    <th>Moeda</th>
-                                    <th>Símbolo</th>
-                                    <th>Compra</th>
-                                    <th>Venda</th>
-                            </tr>
+                        <tr>
+                            <th>Moeda</th>
+                            <th>Símbolo</th>
+                            <th>Compra</th>
+                            <th>Venda</th>
+                        </tr>
                     </thead>
                     <tbody>
-                            <tr>
-                                    <td>Euro</td>
-                                    <td>EUR</td>
-                                    <td><span class="variacao alta">R$ 5,54</span></td>
-                                    <td><span class="variacao alta">R$ 5,56</span></td>
-                            </tr>
-                            <tr>
-                                    <td>Libra Esterlina</td>
-                                    <td>GBP</td>
-                                    <td><span class="variacao alta">R$ 6,42</span></td>
-                                    <td><span class="variacao alta">R$ 6,45</span></td>
-                            </tr>
-                            <tr>
-                                    <td>Peso Argentino</td>
-                                    <td>ARS</td>
-                                    <td><span class="variacao baixa">R$ 0,006</span></td>
-                                    <td><span class="variacao baixa">R$ 0,006</span></td>
-                            </tr>
-                            <tr>
-                                    <td>Bitcoin</td>
-                                    <td>BTC</td>
-                                    <td><span class="variacao alta">R$ 520.450</span></td>
-                                    <td><span class="variacao alta">R$ 520.455</span></td>
-                            </tr>
+                        <tr>
+                            <td>Euro</td>
+                            <td>EUR</td>
+                            <td><span class="variacao alta">R$ <span id="valor-euro">5,54</span></span></td>
+                            <td><span class="variacao alta">R$ 5,56</span></td>
+                        </tr>
+                        <tr>
+                            <td>Libra Esterlina</td>
+                            <td>GBP</td>
+                            <td><span class="variacao alta">R$ 6,42</span></td>
+                            <td><span class="variacao alta">R$ 6,45</span></td>
+                        </tr>
+                        <tr>
+                            <td>Peso Argentino</td>
+                            <td>ARS</td>
+                            <td><span class="variacao baixa">R$ 0,006</span></td>
+                            <td><span class="variacao baixa">R$ 0,006</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bitcoin</td>
+                            <td>BTC</td>
+                            <td><span class="variacao alta">R$ 520.450</span></td>
+                            <td><span class="variacao alta">R$ 520.455</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
 
             <section class="news-feed">
-                                    <h3><i class="fas fa-newspaper"></i> Destaques do Mercado</h3>
+                <h3><i class="fas fa-newspaper"></i> Destaques do Mercado</h3>
                 <div class="news-item">
-                                    <span class="news-date">Hoje, 14:30</span>
-                                    <p>COPOM mantém taxa Selic: Impactos no cenário de investimentos para 2026.</p>
+                    <span class="news-date">Hoje, 14:30</span>
+                    <p>COPOM mantém taxa Selic: Impactos no cenário de investimentos para 2026.</p>
                 </div>
                 <div class="news-item">
-                                    <span class="news-date">Hoje, 10:15</span>
-                                    <p>Exportações baianas batem recorde no primeiro trimestre; Agronegócio lidera.</p>
+                    <span class="news-date">Hoje, 10:15</span>
+                    <p>Exportações baianas batem recorde no primeiro trimestre; Agronegócio lidera.</p>
                 </div>
-                </section>    
+            </section>
 
             <footer>
                 <div class="footer-content">
@@ -107,7 +110,8 @@
                 </div>
             </footer>
         </main>
+    </div>
+    <script src="script.js"></script>
+</body>
 
-    </div> 
-    </body>
 </html>
